@@ -1,0 +1,107 @@
+# Copyright (C) 2024 Triq Hub
+# This file is distributed under the same license as the Triq Hub Reviews V2 plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Triq Hub Reviews V2 4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/udia-reviews-v2\n"
+"POT-Creation-Date: 2024-12-06 07:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pt_BR\n"
+
+#: udia-reviews-v2.php:36
+#, php-format
+msgid "%s: Este plugin requer o WooCommerce instalado e ativo para funcionar."
+msgstr ""
+
+#: includes/class-udia-cpt.php:57
+msgctxt "Post type general name"
+msgid "Reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:58
+msgctxt "Post type singular name"
+msgid "Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:59
+msgctxt "Admin menu name"
+msgid "Reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:60
+msgctxt "Add new on admin bar"
+msgid "Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:61
+msgid "Adicionar Novo"
+msgstr ""
+
+#: includes/class-udia-cpt.php:62
+msgid "Adicionar Novo Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:63
+msgid "Novo Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:64
+msgid "Editar Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:65
+msgid "Ver Review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:66
+msgid "Todos os Reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:67
+msgid "Buscar Reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:68
+msgid "Reviews Pai:"
+msgstr ""
+
+#: includes/class-udia-cpt.php:69
+msgid "Nenhum review encontrado."
+msgstr ""
+
+#: includes/class-udia-cpt.php:70
+msgid "Nenhum review encontrado na lixeira."
+msgstr ""
+
+#: includes/class-udia-cpt.php:71
+msgid "Arquivos de Reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:72
+msgid "Inserir no review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:73
+msgid "Enviado para este review"
+msgstr ""
+
+#: includes/class-udia-cpt.php:74
+msgid "Filtrar lista de reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:75
+msgid "Navegação da lista de reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:76
+msgid "Lista de reviews"
+msgstr ""
+
+#: includes/class-udia-cpt.php:86
+msgid "Avaliações e depoimentos de clientes sobre produtos"
+msgstr ""

@@ -1,0 +1,813 @@
+:root {
+  --udia-bg: #222222;
+  --udia-accent: #39ff14;
+  --udia-white: #ffffff;
+  --udia-beige: #222222;
+  --udia-text: #ffffff;
+  --udia-text-muted: #bbbbbb;
+  --udia-shadow: rgba(0, 0, 0, 0.2);
+  --udia-border: rgba(255, 255, 255, 0.1);
+  --udia-radius: 0.6rem;
+
+  /* Curvas de animação premium */
+  --udia-ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --udia-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --udia-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Dark Mode Automático */
+@media (prefers-color-scheme: light) {
+  :root {
+    --udia-bg: #222222;
+    --udia-beige: #222222;
+    --udia-text: #ffffff;
+    --udia-text-muted: #bbbbbb;
+    --udia-border: rgba(255, 255, 255, 0.1);
+    --udia-shadow: rgba(0, 0, 0, 0.2);
+  }
+
+  .udia-input,
+  .udia-textarea,
+  .udia-select {
+    background: rgba(255, 255, 255, 0.03);
+    color: #ffffff;
+  }
+
+  .udia-star label {
+    background: transparent;
+  }
+
+  .udia-shop-star.empty {
+    color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --udia-border: rgba(255, 255, 255, 0.3);
+    --udia-text-muted: #e0e0e0;
+  }
+}
+
+/* Estilos Gerais (Form/List) */
+.udia-review-wrap {
+  width: 100%;
+  max-width: 70rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: var(--udia-bg);
+  color: var(--udia-white);
+  border-radius: var(--udia-radius);
+  box-sizing: border-box;
+  box-shadow: 0 0 1rem var(--udia-shadow);
+}
+
+.udia-review-form {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--udia-radius);
+  margin-bottom: 1rem;
+  border: 1px solid var(--udia-border);
+}
+
+.udia-review-form label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--udia-white);
+  font-weight: 500;
+}
+
+.udia-input,
+.udia-textarea,
+.udia-select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--udia-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--udia-white);
+  box-sizing: border-box;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.udia-input:focus,
+.udia-textarea:focus,
+.udia-select:focus {
+  outline: none;
+  border-color: var(--udia-accent);
+  box-shadow: 0 0 0 2px rgba(57, 255, 20, 0.2);
+}
+
+.udia-textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.udia-btn {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--udia-accent) 0%, #4dff29 100%);
+  color: var(--udia-bg);
+  font-weight: 700;
+  transition: all 0.3s var(--udia-ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.udia-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.udia-btn:hover::before {
+  left: 100%;
+}
+
+.udia-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(57, 255, 20, 0.4);
+  background: linear-gradient(135deg, #4dff29 0%, #66ff4d 100%);
+}
+
+.udia-btn:active {
+  transform: translateY(0);
+}
+
+.udia-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.udia-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.udia-stars {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.udia-star input {
+  display: none;
+}
+
+.udia-star label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.05rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--udia-border);
+  background: transparent;
+  color: var(--udia-white);
+  cursor: pointer;
+  transition: all .12s;
+}
+
+.udia-star label:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--udia-accent);
+}
+
+.udia-star label.checked {
+  background: var(--udia-accent);
+  color: var(--udia-bg);
+  border-color: var(--udia-accent);
+}
+
+/* --- ESTILO UNIFICADO E COMPACTO PARA TODOS OS CONTAINERS DE REVIEW --- */
+.udia-single-review {
+  width: 95%;
+  /* Largura fixa de 95% */
+  max-width: 40rem;
+  /* Limita a largura máxima para não ficar enorme em telas grandes */
+  margin: 0 auto 1.2rem;
+  /* Centraliza e define margem inferior */
+  padding: 1.2rem;
+  border-radius: var(--udia-radius);
+  background: var(--udia-beige);
+  color: var(--udia-text);
+  box-shadow: 0 0.2rem 0.4rem var(--udia-shadow);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.2s;
+  border: 1px solid var(--udia-border);
+  min-height: 18rem;
+  /* Altura mínima mais compacta */
+  justify-content: center;
+  /* <<< CORREÇÃO APLICADA AQUI */
+  gap: 0.8rem;
+}
+
+.udia-single-review:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--udia-shadow);
+  transition: all 0.4s var(--udia-ease-out);
+}
+
+/* Animação de entrada para novos reviews */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.udia-single-review.udia-new {
+  animation: fadeInUp 0.6s var(--udia-ease-out);
+}
+
+/* Loading skeleton para reviews */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.udia-review-skeleton {
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.05) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: var(--udia-radius);
+  min-height: 18rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Avatar */
+.udia-review-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  box-shadow: 0 2px 8px var(--udia-shadow);
+  transition: transform 0.2s ease;
+  background: var(--udia-bg);
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.udia-review-avatar:hover {
+  transform: scale(1.05);
+}
+
+.udia-review-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 50%;
+}
+
+/* Nome do Cliente */
+.udia-review-author-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--udia-white);
+  margin: 0;
+}
+
+/* Estrelas (Avaliação) */
+.udia-review-rating {
+  font-size: 1.3rem;
+  color: var(--udia-accent);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.1rem;
+}
+
+/* Produto */
+.udia-review-product {
+  font-size: 0.85rem;
+  color: var(--udia-text-muted);
+  margin: 0;
+  font-style: italic;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Depoimento */
+.udia-review-content {
+  font-size: 0.95rem;
+  color: var(--udia-text);
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  text-align: center;
+}
+
+.udia-manual-product-wrap {
+  display: none;
+}
+
+#udia-reviews-list .udia-single-review {
+  margin-bottom: 1.2rem;
+}
+
+/* NOVO CARROSSEL: Estilos (RESTAURADO E MELHORADO) */
+.udia-review-carousel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.udia-carousel-viewport {
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.udia-carousel-track {
+  position: relative;
+  display: flex;
+  transition: transform 300ms ease-out;
+  cursor: grab;
+  user-select: none;
+}
+
+.udia-carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contêiner de navegação embaixo dos slides */
+.udia-carousel-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+/* Botões de navegação */
+.udia-carousel-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--udia-white);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.2s;
+  margin: 0 0.5rem;
+}
+
+.udia-carousel-btn:hover {
+  background: var(--udia-accent);
+  color: var(--udia-bg);
+  transform: scale(1.1);
+}
+
+.udia-carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.udia-carousel-btn--prev {
+  order: 1;
+}
+
+.udia-carousel-btn--next {
+  order: 3;
+}
+
+/* Dots de navegação */
+.udia-carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  order: 2;
+}
+
+.udia-carousel-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.udia-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.udia-carousel-dot.active {
+  background: var(--udia-accent);
+  transform: scale(1.2);
+}
+
+/* --- NOVOS ESTILOS PARA INTEGRAÇÃO NA PÁGINA DO PRODUTO --- */
+.udia-product-review-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.udia-product-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.udia-product-star {
+  color: var(--udia-text-muted);
+  font-weight: bold;
+}
+
+.udia-product-star.filled {
+  color: var(--udia-accent);
+}
+
+.udia-product-review-count {
+  color: var(--udia-accent);
+  font-weight: 600;
+  background: rgba(57, 255, 20, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+}
+
+.udia-product-full-reviews {
+  width: 100%;
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.udia-product-full-reviews h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--udia-white);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--udia-accent);
+}
+
+/* <<< MELHORIA: regra CSS para o alinhamento que antes era inline */
+.udia-product-full-reviews .udia-review-content {
+  text-align: left;
+}
+
+/* Responsividade ajustada */
+@media (min-width: 48rem) {
+
+  /* ~768px */
+  .udia-carousel-slide {
+    flex: 0 0 50%;
+    min-width: 50%;
+  }
+
+  .udia-review-carousel-wrap {
+    padding: 0 2rem;
+  }
+
+  .udia-single-review {
+    min-height: 16rem;
+    padding: 1rem;
+  }
+
+  .udia-review-avatar {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.1rem;
+  }
+
+  .udia-review-author-name {
+    font-size: 1rem;
+  }
+
+  .udia-review-rating {
+    font-size: 1.2rem;
+  }
+
+  .udia-review-content {
+    font-size: 0.9rem;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+  }
+}
+
+@media (min-width: 64rem) {
+
+  /* ~1024px */
+  .udia-carousel-slide {
+    flex: 0 0 33.333%;
+    min-width: 33.333%;
+  }
+
+  .udia-single-review {
+    min-height: 16rem;
+    padding: 1.2rem;
+  }
+
+  .udia-review-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.2rem;
+  }
+
+  .udia-review-author-name {
+    font-size: 1.05rem;
+  }
+
+  .udia-review-rating {
+    font-size: 1.3rem;
+  }
+
+  .udia-review-content {
+    font-size: 0.95rem;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (max-width: 48rem) {
+  .udia-review-wrap {
+    padding: 0.8rem;
+    margin: 0.8rem auto;
+  }
+
+  .udia-star label {
+    min-width: 1.9rem;
+    height: 1.9rem;
+    font-size: 0.95rem;
+  }
+
+  .udia-review-carousel-wrap {
+    padding: 0 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .udia-single-review {
+    min-height: 18rem;
+    padding: 1rem;
+    width: 95%;
+    /* Mantém 95% em mobile */
+  }
+
+  .udia-review-avatar {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .udia-review-author-name {
+    font-size: 1rem;
+  }
+
+  .udia-review-rating {
+    font-size: 1.2rem;
+  }
+
+  .udia-review-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+  }
+
+  .udia-carousel-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .udia-single-review {
+    min-height: 20rem;
+    padding: 0.9rem;
+  }
+
+  .udia-review-avatar {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1rem;
+  }
+
+  .udia-review-author-name {
+    font-size: 0.95rem;
+  }
+
+  .udia-review-rating {
+    font-size: 1.1rem;
+  }
+
+  .udia-review-content {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+  }
+
+  .udia-carousel-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
+
+/* ========== TOAST NOTIFICATIONS ========== */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.udia-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  background: var(--udia-bg);
+  color: var(--udia-white);
+  border-radius: var(--udia-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  min-width: 250px;
+  max-width: 400px;
+  border-left: 4px solid var(--udia-accent);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  animation: slideInUp 0.3s var(--udia-ease-out);
+}
+
+.udia-toast--success {
+  border-left-color: #4dff29;
+}
+
+.udia-toast--error {
+  border-left-color: #ff4444;
+}
+
+.udia-toast--warning {
+  border-left-color: #ffaa00;
+}
+
+.udia-toast--info {
+  border-left-color: var(--udia-accent);
+}
+
+/* ========== FOCUS STATES ACESSÍVEIS ========== */
+*:focus-visible {
+  outline: 2px solid var(--udia-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.udia-star label:focus-visible {
+  box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.5);
+  outline: none;
+}
+
+.udia-btn:focus-visible {
+  outline: 3px solid var(--udia-accent);
+  outline-offset: 3px;
+}
+
+/* ========== LOADING SPINNER ========== */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.udia-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: var(--udia-white);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* ========== SCREEN READER ONLY ========== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========== ERROR STATES ========== */
+.udia-input.error,
+.udia-textarea.error,
+.udia-select.error {
+  border-color: #ff4444;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+.udia-error-message {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+}
