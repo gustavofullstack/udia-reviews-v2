@@ -185,7 +185,8 @@
 }
 
 /* --- ESTILO UNIFICADO E COMPACTO PARA TODOS OS CONTAINERS DE REVIEW --- */
-.udia-single-review {
+.udia-single-review,
+.udia-review-carousel-wrap .udia-single-review {
   width: 95%;
   /* Largura fixa de 95% */
   max-width: 40rem;
@@ -194,10 +195,11 @@
   /* Centraliza e define margem inferior */
   padding: 1.2rem;
   border-radius: var(--udia-radius);
-  background: var(--udia-beige) !important;
+  background: var(--udia-dark, #222222) !important;
   color: var(--udia-text);
   box-shadow: 0 0.2rem 0.4rem var(--udia-shadow);
   box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   align-items: center;

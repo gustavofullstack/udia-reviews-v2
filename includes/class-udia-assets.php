@@ -31,7 +31,7 @@ class UDIA_Assets {
 	 * @since 4.0.0
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 999 );
 	}
 
 	/**
