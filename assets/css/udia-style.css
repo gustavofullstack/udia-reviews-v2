@@ -1,12 +1,13 @@
 :root {
-  --udia-bg: #222222;
-  --udia-accent: #39ff14;
-  --udia-white: #ffffff;
-  --udia-beige: #222222;
-  --udia-text: #ffffff;
-  --udia-text-muted: #bbbbbb;
+  /* Mapeamento para as variaveis do usuario */
+  --udia-bg: var(--udia-dark, #222222);
+  --udia-accent: var(--udia-primary, #39ff14);
+  --udia-white: var(--udia-text-main, #ffffff);
+  --udia-beige: var(--udia-dark, #222222);
+  --udia-text: var(--udia-text-main, #ffffff);
+  --udia-text-muted: var(--udia-text-muted, #bbbbbb);
   --udia-shadow: rgba(0, 0, 0, 0.2);
-  --udia-border: rgba(255, 255, 255, 0.1);
+  --udia-border: var(--udia-border, rgba(255, 255, 255, 0.1));
   --udia-radius: 0.6rem;
 
   /* Curvas de animação premium */
