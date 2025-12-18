@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Triq Hub Reviews V2
  * Description: Sistema de reviews com formulário, lista, carrossel e integração direta na página do produto. Layout unificado, centralizado e responsivo.
- * Version: 4.0
+ * Version: 4.0.1
  * Author: Triq Hub
  * Requires at least: 6.0
  * Tested up to: 6.6
@@ -13,7 +13,7 @@
  *
  * @package UDIA_Reviews_V2
  * @author Triq Hub
- * @version 4.0.0
+ * @version 4.0.1
  * @since 1.0.0
  */
 

@@ -30,7 +30,7 @@ class UDIA_Constants {
 	 * @since 4.0.0
 	 * @var string
 	 */
-	const VERSION = '4.0';
+	const VERSION = '4.0.1';
 
 	/**
 	 * Text domain for internationalization
