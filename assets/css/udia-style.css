@@ -16,32 +16,7 @@
   --udia-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Dark Mode Automático */
-@media (prefers-color-scheme: light) {
-  :root {
-    --udia-bg: #222222;
-    --udia-beige: #222222;
-    --udia-text: #ffffff;
-    --udia-text-muted: #bbbbbb;
-    --udia-border: rgba(255, 255, 255, 0.1);
-    --udia-shadow: rgba(0, 0, 0, 0.2);
-  }
 
-  .udia-input,
-  .udia-textarea,
-  .udia-select {
-    background: rgba(255, 255, 255, 0.03);
-    color: #ffffff;
-  }
-
-  .udia-star label {
-    background: transparent;
-  }
-
-  .udia-shop-star.empty {
-    color: rgba(255, 255, 255, 0.2);
-  }
-}
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
@@ -219,7 +194,7 @@
   /* Centraliza e define margem inferior */
   padding: 1.2rem;
   border-radius: var(--udia-radius);
-  background: var(--udia-beige);
+  background: var(--udia-beige) !important;
   color: var(--udia-text);
   box-shadow: 0 0.2rem 0.4rem var(--udia-shadow);
   box-sizing: border-box;
