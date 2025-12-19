@@ -33,7 +33,7 @@ jobs:
         id: version
         run: |
           # Extract version
-          current_version=$(grep "Version:" udia-reviews-v2.php | awk '{print $3}')
+          current_version=$(grep "Version:" udia-reviews-v2.php | head -n 1 | awk '{print $3}')
           echo "Current Version: $current_version"
           
           # Split by dot
