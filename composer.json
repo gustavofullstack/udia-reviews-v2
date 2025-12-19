@@ -1,0 +1,20 @@
+{
+    "name": "gustavofullstack/udia-reviews-v2",
+    "description": "Reviews plugin for Udia",
+    "type": "wordpress-plugin",
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "^5.0"
+    },
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Gustavo Almeida",
+            "email": "gustavo@example.com"
+        }
+    ],
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    }
+}

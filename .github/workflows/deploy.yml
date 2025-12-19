@@ -1,0 +1,87 @@
+name: Deploy Plugin
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Get Current Version & Bump
+        id: version
+        run: |
+          # Extract version
+          current_version=$(grep "Version:" udia-reviews-v2.php | awk '{print $3}')
+          echo "Current Version: $current_version"
+          
+          # Split by dot
+          IFS='.' read -r -a parts <<< "$current_version"
+          major=${parts[0]}
+          minor=${parts[1]}
+          patch=${parts[2]}
+          
+          if [ -z "$patch" ]; then patch=0; fi
+          
+          # Increment patch
+          new_patch=$((patch + 1))
+          new_version="$major.$minor.$new_patch"
+          
+          echo "New Version: $new_version"
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Update Version in File
+        run: |
+          # Update the Version header
+          sed -i "s/Version: $current_version/Version: ${{ steps.version.outputs.new_version }}/" udia-reviews-v2.php
+          # Update the @version tag if present
+          sed -i "s/@version $current_version/@version ${{ steps.version.outputs.new_version }}/" udia-reviews-v2.php
+          # Update the define constant
+          sed -i "s/define( 'UDIA_REVIEW_V2_VERSION', .*/define( 'UDIA_REVIEW_V2_VERSION', '${{ steps.version.outputs.new_version }}' );/" udia-reviews-v2.php
+
+      - name: Commit and Push Version Bump
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add udia-reviews-v2.php
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }} [skip ci]"
+          git push
+
+      - name: Create ZIP
+        run: |
+          mkdir udia-reviews-v2
+          # Copy all files to the folder, excluding what we don't want in the zip
+          rsync -av --progress . udia-reviews-v2 --exclude udia-reviews-v2 --exclude .git --exclude .github --exclude .gitignore --exclude composer.json --exclude composer.lock --exclude composer.phar
+          zip -r udia-reviews-v2.zip udia-reviews-v2
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.new_version }}
+          name: v${{ steps.version.outputs.new_version }}
+          files: udia-reviews-v2.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
