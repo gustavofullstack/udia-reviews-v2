@@ -28,6 +28,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// TriqHub Invisible Connector
+if ( ! class_exists( 'TriqHub_Connector' ) ) {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/core/class-triqhub-connector.php';
+    new TriqHub_Connector( 'TRQ-INVISIBLE-KEY', 'udia-reviews-v2' );
+}
+
 // Prevent duplicate loading.
 if ( defined( 'UDIA_REVIEW_V2_LOADED' ) ) {
 	return;
