@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Triq Hub Reviews V2
+ * Plugin Name: TriqHub: Reviews
  * Plugin URI: https://github.com/gustavofullstack/udia-reviews-v2
  * Description: Sistema de reviews com formulário, lista, carrossel e integração direta na página do produto. Layout unificado, centralizado e responsivo.
  * Version: 4.0.35554.0.3554.0.354.0.34
@@ -138,3 +138,10 @@ function udia_v2_activate() {
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'udia_v2_activate' );
+
+
+// TriqHub Styling
+function triqhub_enqueue_admin_udia_reviews_v2() {
+    wp_enqueue_style( 'triqhub-admin-style', plugin_dir_url( __FILE__ ) . 'assets/css/triqhub-admin.css' );
+}
+add_action( 'admin_enqueue_scripts', 'triqhub_enqueue_admin_udia_reviews_v2' );
