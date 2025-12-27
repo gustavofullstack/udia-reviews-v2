@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: TriqHub: Reviews
- * Plugin URI: https://github.com/gustavofullstack/udia-reviews-v2
+ * Plugin URI: https://github.com/gustavofullstack/triqhub-reviews
  * Description: Sistema de reviews com formulário, lista, carrossel e integração direta na página do produto. Layout unificado, centralizado e responsivo.
  * Version: 1.0.0
  * Author: Triq Hub
@@ -13,7 +13,7 @@
  * Domain Path: /languages
  *
  * Domain Path: /languages
- * GitHub Plugin URI: https://github.com/gustavofullstack/udia-reviews-v2
+ * GitHub Plugin URI: https://github.com/gustavofullstack/triqhub-reviews
  * Release Asset: true
  *
  * @package UDIA_Reviews_V2
@@ -50,9 +50,9 @@ UDIA_Constants::init( __FILE__ );
 if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
 	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 	$myUpdateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
-		'https://github.com/gustavofullstack/udia-reviews-v2',
+		'https://github.com/gustavofullstack/triqhub-reviews',
 		__FILE__,
-		'udia-reviews-v2'
+		'triqhub-reviews'
 	);
 	// Optional: Set the branch that contains the stable release.
 	$myUpdateChecker->getVcsApi()->enableReleaseAssets();
