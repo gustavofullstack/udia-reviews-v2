@@ -1,5 +1,5 @@
 {
-    "name": "gustavofullstack/udia-reviews-v2",
+    "name": "triqhub/reviews",
     "description": "Reviews plugin for Udia",
     "type": "wordpress-plugin",
     "require": {
